@@ -1,0 +1,152 @@
+\documentclass[final, finnished, monochromatic]{jyu}
+
+\addbibresource{thesis.bib}
+
+\newcommand \jyuauthor{Tekijän Nimi}
+\newcommand \jyuauthorfinnish \jyuauthor
+\newcommand \jyutitle{Title of Work}
+\newcommand \jyutitlefinnish{Työn otsikko}
+\newcommand \jyupublication{Type of Work}
+\newcommand \jyupublicationfinnish{Työn tyyppi}
+\newcommand \jyusupervisor{Ohjaajan Nimi}
+\newcommand \jyusupervisorfinnish \jyusupervisor
+\newcommand \jyuuniversity{University of Jyväskylä}
+\newcommand \jyuuniversityfinnish{Jyväskylän yliopisto}
+\newcommand \jyudepartment{Department of Physics}
+\newcommand \jyudepartmentfinnish{Fysiikan laitos}
+\newcommand \jyuyear{2016}
+\newcommand \jyumonth{12}
+\newcommand \jyuday{24}
+
+\makesetup
+
+% These commands are optional.
+\usepackage[intlimits, sumlimits]{amsmath}
+\newcommand \yesnumber{\addtocounter{equation} 1\tag \theequation}
+\newcommand \full{{\mathrm d}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Tiivistelmä}
+\addcontentsline{toc}{section}{Tiivistelmä}
+
+\noindent
+\jyuauthorfinnish \\
+\jyutitlefinnish \\
+\jyupublicationfinnish \\
+\jyudepartmentfinnish, \jyuuniversityfinnish, \jyuyear,
+\pageref{p/lastpage}~sivua
+
+\bigskip
+
+\noindent
+Tämän asiakirjaluokan tarkoitus on tarjota pohja
+Jyväskylän yliopiston opiskelijoiden ja henkilökunnan julkaisuille.
+Luokka esimerkkeineen on julkaistu lisenssillä GNU GPL, mikä tarkoittaa sitä,
+että sillä luodut asiakirjat tulee julkaista lähdekoodeineen.
+
+\bigskip
+
+\noindent Avainsanat: asiakirjaluokka, latex
+
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\noindent
+\jyuauthor \\
+\jyutitle \\
+\jyupublication \\
+\jyudepartment, \jyuuniversity, \jyuyear,
+\pageref{p/lastpage}~pages
+
+\bigskip
+
+\begin{otherlanguage}{english}
+  \noindent
+  This document class is intended to provide a basis
+  for the publications of students and staff of the University of Jyväskylä.
+  The class and its examples are released under the GNU GPL, which means that
+  documents built using the class must be accompanied by their source code.
+\end{otherlanguage}
+
+\bigskip
+
+\noindent Keywords: document class, latex
+
+% This section is optional.
+\section*{Esipuhe}
+\addcontentsline{toc}{section}{Esipuhe}
+
+Tähän voi kirjoittaa esipuheen.
+
+\bigskip
+
+Jyväskylässä \formatdate \jyuday \jyumonth \jyuyear
+
+\bigskip
+
+\jyuauthor
+
+\tableofcontents
+
+\section{Johdanto}
+\label{s/introduction}
+
+Tälle asiakirjaluokalle voi välittää \cite{kiiskinen2016}
+taulukon \ref{t/table} mukaisia asetuksia.
+
+\begin{table}
+  \centering
+  \caption{Asiakirjaluokan asetuksia.}
+  \label{t/table}
+  \begin{tabular}{ll}
+    \toprule
+    Avainsana & Merkitys \\
+    \midrule
+    \texttt{finnished} & Asiakirja on kirjoitettu suomeksi \\
+    \texttt{monochromatic} & Asiakirjassa on vain harmaasävykuvia  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% This section is optional.
+\section{Asiakirjaluokan toteutus}
+Tämän asiakirjaluokan käyttämän
+ladontajärjestelmän logo on kuvassa \ref{f/figure}.
+
+\begin{figure}
+  \centering
+  \huge \LaTeX
+  \caption{Ladontajärjestelmän logo.}
+  \label{f/figure}
+\end{figure}
+
+\section{Päätäntö}
+\label{s/conclusions}
+
+Tätä asiakirjaluokkaa voi käyttää vaikka
+kvanttimekaniikkaan liittyvän \cite{feynman1948} yhtälön
+\begin{align*}
+  \phi(R', R'') & = \int \full x \chi(t, x)^* \psi(t, x)
+  \yesnumber \label{e/equation}
+\end{align*}
+kirjoittamiseen.
+
+% This command is optional.
+\nocite{*}
+
+\printbibliography[heading=bibintoc]
+
+\label{p/lastpage}
+
+\appendix
+
+\appendixsection{Ensimmäinen liite}
+\label{s/first-attachment}
+
+\appendixsection{Toinen liite}
+\label{s/second-attachment}
+
+\end{document}

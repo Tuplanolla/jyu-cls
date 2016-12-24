@@ -1,0 +1,43 @@
+#! /bin/sh
+
+case "$#" in
+  0)
+    echo "Too few arguments." >&2
+    exit 1
+    ;;
+  1)
+    case "$1" in
+      copy)
+        f='mkdir -p'
+        g='cp -u'
+        ;;
+      link)
+        f='mkdir -p'
+        g='ln -fs'
+        ;;
+      help)
+        f="printf '%s\n'"
+        g="printf '%s -> %s\n'"
+        ;;
+      *)
+        echo "Invalid argument." >&2
+        exit 1
+        ;;
+    esac
+    ;;
+  *)
+    echo "Too many arguments." >&2
+    exit 1
+    ;;
+esac
+
+x="$PWD"
+y="${TEXMF-$HOME}"
+
+eval "$f" "$y/texmf/tex/generic/jyu"
+eval "$f" "$y/texmf/tex/latex/jyu"
+eval "$g" "$x/jyu-tight-eps-converted-to.pdf" "$y/texmf/tex/generic/jyu"
+eval "$g" "$x/jyu-tight-outline-eps-converted-to.pdf" "$y/texmf/tex/generic/jyu"
+eval "$g" "$x/jyu-tight-outline.eps" "$y/texmf/tex/generic/jyu"
+eval "$g" "$x/jyu-tight.eps" "$y/texmf/tex/generic/jyu"
+eval "$g" "$x/jyu.cls" "$y/texmf/tex/latex/jyu"
