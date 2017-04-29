@@ -1,0 +1,102 @@
+\documentclass[final, finnished, monochromatic]{jyuseminar}
+
+\addbibresource{thesis.bib}
+
+\newcommand \jyuauthor{Tekijän Nimi}
+\newcommand \jyuauthorfinnish \jyuauthor
+\newcommand \jyutitle{Title of Work}
+\newcommand \jyutitlefinnish{Työn otsikko}
+\newcommand \jyupublication{Type of Work}
+\newcommand \jyupublicationfinnish{Työn tyyppi}
+\newcommand \jyusupervisor{Ohjaajan Nimi}
+\newcommand \jyusupervisorfinnish \jyusupervisor
+\newcommand \jyuinstitute{University of Jyväskylä}
+\newcommand \jyuinstitutefinnish{Jyväskylän yliopisto}
+\newcommand \jyudepartment{Department of Physics}
+\newcommand \jyudepartmentfinnish{Fysiikan laitos}
+\newcommand \jyuyear{2017}
+\newcommand \jyumonth{05}
+\newcommand \jyuday{01}
+
+\makesetup
+
+\beamertemplatenavigationsymbolsempty
+
+% These commands are optional.
+\newcommand \yesnumber{\addtocounter{equation} 1\tag \theequation}
+\newcommand \full{{\mathrm d}}
+
+\begin{document}
+
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Johdanto}
+
+    \section{Johdanto}
+    \label{s/introduction}
+
+    \begin{block}{Huomautus}
+      Tälle asiakirjaluokalle \footfullcite{kiiskinen-2016} voi välittää
+      oheisen taulukon mukaisia asetuksia.
+    \end{block}
+
+    \begin{table}
+      \centering
+      \caption{Asiakirjaluokan asetuksia.}
+      \label{t/table}
+      \begin{tabular}{ll}
+        Avainsana & Merkitys \\
+        \texttt{finnished} & Asiakirja on kirjoitettu suomeksi \\
+        \texttt{monochromatic} & Asiakirjassa on vain harmaasävykuvia \\
+      \end{tabular}
+    \end{table}
+  \end{frame}
+
+  \begin{frame}
+    % This frame is optional.
+    \frametitle{Asiakirjaluokan toteutus}
+    Tämän asiakirjaluokan käyttämän
+    ladontajärjestelmän logo on oheisessa kuviossa.
+
+    \begin{figure}
+      \centering
+      \rmfamily \huge \LaTeX
+      \caption{Ladontajärjestelmän logo.}
+    \end{figure}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Päätäntö}
+    \begin{block}{Esimerkki}
+      Tätä asiakirjaluokkaa voi käyttää vaikka
+      kvanttimekaniikkaan liittyvän \footfullcite{feynman-1948} yhtälön
+      \begin{align*}
+        \phi(R', R'') & = \int_0^\infty \full x \chi(t, x)^* \psi(t, x)
+        \yesnumber \label{e/equation}
+      \end{align*}
+      kirjoittamiseen.
+    \end{block}
+  \end{frame}
+
+  % This command is optional.
+  \nocite{*}
+
+  \begin{frame}
+    \frametitle{Lähteet}
+    \printbibliography[heading=bibintoc]
+  \end{frame}
+
+  \appendix
+
+  \begin{frame}
+    \frametitle{Ensimmäinen liite}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Toinen liite}
+  \end{frame}
+
+\end{document}

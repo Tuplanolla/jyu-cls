@@ -8,16 +8,16 @@ case "$#" in
   1)
     case "$1" in
       copy)
-        f='mkdir -p'
-        g='cp -u'
+        mk='mkdir -p'
+        mv='cp -u'
         ;;
       link)
-        f='mkdir -p'
-        g='ln -fs'
+        mk='mkdir -p'
+        mv='ln -fs'
         ;;
       help)
-        f="printf '%s\n'"
-        g="printf '%s -> %s\n'"
+        mk="printf '%s\n'"
+        mv="printf '%s -> %s\n'"
         ;;
       *)
         echo "Invalid argument." >&2
@@ -31,13 +31,38 @@ case "$#" in
     ;;
 esac
 
-x="$PWD"
-y="${TEXMF-$HOME}"
+root="${TEXMF-$HOME}"
 
-eval "$f" "$y/texmf/tex/generic/jyu"
-eval "$f" "$y/texmf/tex/latex/jyu"
-eval "$g" "$x/jyu-tight-eps-converted-to.pdf" "$y/texmf/tex/generic/jyu"
-eval "$g" "$x/jyu-tight-outline-eps-converted-to.pdf" "$y/texmf/tex/generic/jyu"
-eval "$g" "$x/jyu-tight-outline.eps" "$y/texmf/tex/generic/jyu"
-eval "$g" "$x/jyu-tight.eps" "$y/texmf/tex/generic/jyu"
-eval "$g" "$x/jyu.cls" "$y/texmf/tex/latex/jyu"
+from="$PWD"
+
+to="$root/texmf/tex/latex/jyu"
+eval "$mk" "$to"
+eval "$mv" "$from/jyuseminar.cls" "$to"
+eval "$mv" "$from/jyuthesis.cls" "$to"
+
+to="$root/texmf/tex/generic/jyu"
+eval "$mk" "$to"
+eval "$mv" "$from/jyu-loose-english-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-english-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-english-outline.eps" "$to"
+eval "$mv" "$from/jyu-loose-english.eps" "$to"
+eval "$mv" "$from/jyu-loose-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-finnish-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-finnish-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-finnish-outline.eps" "$to"
+eval "$mv" "$from/jyu-loose-finnish.eps" "$to"
+eval "$mv" "$from/jyu-loose-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-loose-outline.eps" "$to"
+eval "$mv" "$from/jyu-loose.eps" "$to"
+eval "$mv" "$from/jyu-tight-english-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-english-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-english-outline.eps" "$to"
+eval "$mv" "$from/jyu-tight-english.eps" "$to"
+eval "$mv" "$from/jyu-tight-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-finnish-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-finnish-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-finnish-outline.eps" "$to"
+eval "$mv" "$from/jyu-tight-finnish.eps" "$to"
+eval "$mv" "$from/jyu-tight-outline-eps-converted-to.pdf" "$to"
+eval "$mv" "$from/jyu-tight-outline.eps" "$to"
+eval "$mv" "$from/jyu-tight.eps" "$to"

@@ -1,4 +1,4 @@
-\documentclass[final, finnished, monochromatic]{jyu}
+\documentclass[final, finnished, monochromatic]{jyuthesis}
 
 \addbibresource{thesis.bib}
 
@@ -10,18 +10,17 @@
 \newcommand \jyupublicationfinnish{Työn tyyppi}
 \newcommand \jyusupervisor{Ohjaajan Nimi}
 \newcommand \jyusupervisorfinnish \jyusupervisor
-\newcommand \jyuuniversity{University of Jyväskylä}
-\newcommand \jyuuniversityfinnish{Jyväskylän yliopisto}
+\newcommand \jyuinstitute{University of Jyväskylä}
+\newcommand \jyuinstitutefinnish{Jyväskylän yliopisto}
 \newcommand \jyudepartment{Department of Physics}
 \newcommand \jyudepartmentfinnish{Fysiikan laitos}
-\newcommand \jyuyear{2016}
-\newcommand \jyumonth{12}
-\newcommand \jyuday{24}
+\newcommand \jyuyear{2017}
+\newcommand \jyumonth{05}
+\newcommand \jyuday{01}
 
 \makesetup
 
 % These commands are optional.
-\usepackage[intlimits, sumlimits]{amsmath}
 \newcommand \yesnumber{\addtocounter{equation} 1\tag \theequation}
 \newcommand \full{{\mathrm d}}
 
@@ -36,7 +35,7 @@
 \jyuauthorfinnish \\
 \jyutitlefinnish \\
 \jyupublicationfinnish \\
-\jyudepartmentfinnish, \jyuuniversityfinnish, \jyuyear,
+\jyudepartmentfinnish, \jyuinstitutefinnish, \jyuyear,
 \pageref{p/lastpage}~sivua
 
 \bigskip
@@ -58,7 +57,7 @@ että sillä luodut asiakirjat tulee julkaista lähdekoodeineen.
 \jyuauthor \\
 \jyutitle \\
 \jyupublication \\
-\jyudepartment, \jyuuniversity, \jyuyear,
+\jyudepartment, \jyuinstitute, \jyuyear,
 \pageref{p/lastpage}~pages
 
 \bigskip
@@ -94,7 +93,7 @@ Jyväskylässä \formatdate \jyuday \jyumonth \jyuyear
 \section{Johdanto}
 \label{s/introduction}
 
-Tälle asiakirjaluokalle voi välittää \cite{kiiskinen-2016}
+Tälle asiakirjaluokalle \cite{kiiskinen-2016} voi välittää
 taulukon \ref{t/table} mukaisia asetuksia.
 
 \begin{table}
@@ -106,7 +105,7 @@ taulukon \ref{t/table} mukaisia asetuksia.
     Avainsana & Merkitys \\
     \midrule
     \texttt{finnished} & Asiakirja on kirjoitettu suomeksi \\
-    \texttt{monochromatic} & Asiakirjassa on vain harmaasävykuvia  \\
+    \texttt{monochromatic} & Asiakirjassa on vain harmaasävykuvia \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -114,11 +113,11 @@ taulukon \ref{t/table} mukaisia asetuksia.
 % This section is optional.
 \section{Asiakirjaluokan toteutus}
 Tämän asiakirjaluokan käyttämän
-ladontajärjestelmän logo on kuvassa \ref{f/figure}.
+ladontajärjestelmän logo on kuviossa \ref{f/figure}.
 
 \begin{figure}
   \centering
-  \huge \LaTeX
+  \rmfamily \huge \LaTeX
   \caption{Ladontajärjestelmän logo.}
   \label{f/figure}
 \end{figure}

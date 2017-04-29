@@ -1,29 +1,30 @@
-# University of Jyväskylä LaTeX Document Class
+# University of Jyväskylä Document Classes
 
-This LaTeX document class is intended to provide a basis
+These LaTeX document classes are intended to provide a basis
 for the publications of students and staff of the University of Jyväskylä.
 It was originally written by Sampsa "Tuplanolla" Kiiskinen
-to support his technical reports and theses.
-The class and its examples are released under the GNU GPL, which means that
+to support his technical reports, theses and seminars.
+The classes and their examples are released under the GNU GPL, which means that
 documents built using the class must be accompanied by their source code.
 The assets (namely the logos) are released according to
 [the terms and conditions (Finnish)][assets]
 imposed by the University of Jyväskylä.
 
-Note that although this document class produces documents
-that look similar to those produced by the official template,
-it is built on completely different foundations.
-This class is also much easier to use and gets all the technical details right,
-which shows in its handling of vector graphics, date formatting,
+Note that although these document classes produce documents
+that look similar to those produced by the official templates,
+they are built on completely different foundations.
+These classes are also much easier to use and
+get all the technical details right,
+which shows in their handling of vector graphics, date formatting,
 text alignment, file organization and more.
 
 ## Installation
 
-Installing this document class involves copying its files
-to the appropriate locations in the TeX Directory Structure.
+Installing the document classes involves copying their files
+into the appropriate locations in the TeX Directory Structure.
 To make this process easier, a Bourne shell script is provided.
 
-Run the following command to see how the class should be installed.
+Run the following command to see how the classes should be installed.
 
     $ ./install help
 
@@ -32,7 +33,7 @@ it can be changed by setting the `TEXMF` environment variable.
 
     $ TEXMF=/usr/local/share ./install help
 
-To actually install the class, follow the printed instructions or
+To actually install the classes, follow the printed instructions or
 run either of the following commands to perform the actions automatically.
 The former copies the files directly to their destinations while
 the latter only creates absolute symbolic links
@@ -45,11 +46,56 @@ places them inside the destination directories.
 ## Usage
 
 Run the following commands to build an example document
-that uses the document class like a thesis would.
+that uses the thesis document class.
 
     $ pdflatex thesis.tex
     $ biber thesis
     $ pdflatex thesis.tex
     $ pdflatex thesis.tex
 
+Substitute `thesis` for `seminar` to build another example document
+that uses the seminar document class.
+
+## Asset Colors
+
+The colors of the assets do not exactly match their specification.
+It does not really matter whether this is due to Pantone's terrible standards,
+graphic designers' incompetence or bugs in the software rendering pipeline.
+The only consistent workaround is to match the colors manually.
+
+The following table summarizes the colors
+according to the written specification.
+
+| Part   | PMS             | Hex    | RGB        | CMYK
+|:-------|:----------------|:-------|:-----------|:---------------
+| Text   | [Black C][text] | 2d2926 | 45, 41, 38 | 63, 62, 59, 94
+| Flame  | [166 C][flame]  | e35205 | 227, 82, 5 | 0, 76, 100, 0
+| Handle | [286 C][handle] | 0033a0 | 0, 51, 160 | 100, 75, 0, 0
+
+The following table summarizes the actual colors
+rendered by Ghostscript 9.18.
+
+| Part   | Hex    | RGB
+|:-------|:-------|:------------
+| Text   | 231f20 | 35, 31, 32
+| Flame  | f2511b | 242, 81, 27
+| Handle | 244aa5 | 36, 74, 165
+
+## Beamer Themes
+
+For low contrast pick the following combination.
+
+    \usecolortheme{dove} % complete
+    \usecolortheme{rose} % inner
+    \usecolortheme{seahorse} % outer
+
+For high contrast pick the following combination.
+
+    \usecolortheme{dove} % complete
+    \usecolortheme{orchid} % inner
+    \usecolortheme{whale} % outer
+
 [assets]: https://www.jyu.fi/yliopistopalvelut/viestinta/logot
+[text]: https://www.pantone.com/color-finder/Black-C
+[flame]: https://www.pantone.com/color-finder/166-C
+[handle]: https://www.pantone.com/color-finder/286-C
