@@ -21,7 +21,7 @@
 
 \iftoggle{jyufinnished}
   {\PassOptionsToPackage{english, finnish}{babel}}
-  {\PassOptionsToPackage{english}{babel}}
+  {\PassOptionsToPackage{finnish, english}{babel}}
 \RequirePackage{babel}
 \addto \captionsfinnish{\renewcommand \refname{Lähteet}}
 \addto \captionsfinnish{\renewcommand \figurename{Kuvio}}
