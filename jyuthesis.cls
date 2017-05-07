@@ -1,4 +1,4 @@
-\ProvidesClass{jyuthesis}[2017/05/07 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/05/08 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -125,10 +125,10 @@
       \setcounter{jyuauthorcounter} 0
       \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}}
       \expandafter\docsvlist\expandafter{\jyuauthorx}
-      \iftoggle{jyufinnished}
-      {\ifnumcomp{\value{jyuauthorcounter}} = 1
-        {Tekijä}{Tekijät}}
-      {\ifnumcomp{\value{jyuauthorcounter}} = 1
+      \iftoggle{jyufinnished}{
+        \ifnumcomp{\value{jyuauthorcounter}} = 1
+        {Tekijä}{Tekijät}}{
+        \ifnumcomp{\value{jyuauthorcounter}} = 1
         {Author}{Authors}}: \\[0.01\textheight]
       \setcounter{jyuauthorcounter} 0
       \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
@@ -140,10 +140,10 @@
       \setcounter{jyusupervisorcounter} 0
       \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}}
       \expandafter\docsvlist\expandafter{\jyusupervisorx}
-      \iftoggle{jyufinnished}
-      {\ifnumcomp{\value{jyusupervisorcounter}} = 1
-        {Ohjaaja}{Ohjaajat}}
-      {\ifnumcomp{\value{jyusupervisorcounter}} = 1
+      \iftoggle{jyufinnished}{
+        \ifnumcomp{\value{jyusupervisorcounter}} = 1
+        {Ohjaaja}{Ohjaajat}}{
+        \ifnumcomp{\value{jyusupervisorcounter}} = 1
         {Supervisor}{Supervisors}}: \\[0.01\textheight]
       \setcounter{jyusupervisorcounter} 0
       \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}

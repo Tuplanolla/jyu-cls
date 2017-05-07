@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/05/01 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/05/08 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -65,38 +65,34 @@
 \RequirePackage{csquotes}
 
 \newcommand \makesetup{
+  \edef \jyuauthorx{\iftoggle{jyufinnished} \jyuauthorfinnish \jyuauthor}
+  \edef \jyutitlex{\iftoggle{jyufinnished} \jyutitlefinnish \jyutitle}
+  \edef \jyupublicationx{\iftoggle{jyufinnished} \jyupublicationfinnish \jyupublication}
+  \edef \jyusupervisorx{\iftoggle{jyufinnished} \jyusupervisorfinnish \jyusupervisor}
+  \edef \jyuinstitutex{\iftoggle{jyufinnished} \jyuinstitutefinnish \jyuinstitute}
+  \edef \jyudepartmentx{\iftoggle{jyufinnished} \jyudepartmentfinnish \jyudepartment}
+
+  \hypersetup{
+    pdfauthor=\jyuauthorx,
+    pdftitle=\jyutitlex,
+    pdfsubject=\jyupublicationx}
+
   \mode<presentation>
 
-  \iftoggle{jyufinnished}{
-    \hypersetup{
-      pdfauthor=\jyuauthorfinnish,
-      pdftitle=\jyutitlefinnish,
-      pdfsubject=\jyupublicationfinnish}
-
-    \author \jyuauthorfinnish
-    \title \jyutitlefinnish
-    \subtitle \jyupublicationfinnish
-    \institute{\jyuinstitutefinnish \\ \jyudepartmentfinnish}
-    \date{\formatdate \jyuday \jyumonth \jyuyear}}{
-    \hypersetup{
-      pdfauthor=\jyuauthor,
-      pdftitle=\jyutitle,
-      pdfsubject=\jyupublication}
-
-    \author \jyuauthor
-    \title \jyutitle
-    \subtitle \jyupublication
-    \institute{\jyuinstitute \\ \jyudepartment}
-    \date{\formatdate \jyuday \jyumonth \jyuyear}}
+  \author \jyuauthorx
+  \title \jyutitlex
+  \subtitle \jyupublicationx
+  \institute{\jyuinstitutex \\ \jyudepartmentx}
+  \date{\formatdate \jyuday \jyumonth \jyuyear}
 
   \logo{
     \begin{tikzpicture}[every node/.style={inner sep=0pt, outer sep=0pt}]
       \node[
         anchor=south west,
         opacity=\ifnumequal \thepage 1{1.0}{0.25}] (image) {
-        \iftoggle{jyumonochromatic}
-            {\includegraphics[height=27mm]{jyu-tight-outline}}
-            {\includegraphics[height=27mm]{jyu-tight}}};
+          \iftoggle{jyumonochromatic}
+          {\includegraphics[height=27mm]{jyu-tight-outline}}
+          {\includegraphics[height=27mm]{jyu-tight}}};
     \end{tikzpicture}}
 
   \usecolortheme{dove}
