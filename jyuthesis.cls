@@ -1,4 +1,4 @@
-\ProvidesClass{jyuthesis}[2017/05/01 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/05/07 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -101,34 +101,56 @@
 \RequirePackage{microtype}
 
 \newcommand \makesetup{
-  \iftoggle{jyufinnished}{
-    \hypersetup{
-      pdfauthor=\jyuauthorfinnish,
-      pdftitle=\jyutitlefinnish,
-      pdfsubject=\jyupublicationfinnish}}{
-    \hypersetup{
-      pdfauthor=\jyuauthor,
-      pdftitle=\jyutitle,
-      pdfsubject=\jyupublication}}}
+  \edef \jyuauthorx{\iftoggle{jyufinnished} \jyuauthorfinnish \jyuauthor}
+  \edef \jyutitlex{\iftoggle{jyufinnished} \jyutitlefinnish \jyutitle}
+  \edef \jyupublicationx{\iftoggle{jyufinnished} \jyupublicationfinnish \jyupublication}
+  \edef \jyusupervisorx{\iftoggle{jyufinnished} \jyusupervisorfinnish \jyusupervisor}
+  \edef \jyuinstitutex{\iftoggle{jyufinnished} \jyuinstitutefinnish \jyuinstitute}
+  \edef \jyudepartmentx{\iftoggle{jyufinnished} \jyudepartmentfinnish \jyudepartment}
+
+  \hypersetup{
+    pdfauthor=\jyuauthorx,
+    pdftitle=\jyutitlex,
+    pdfsubject=\jyupublicationx}}
 
 \renewcommand \maketitle{
   \begin{titlepage}
     \noindent\hspace*{0.1\textwidth}\rule{0.8pt}
     \textheight\hspace*{0.05\textwidth}\parbox[b]{0.84\textwidth}{
       \raggedright
-      \textbf{\LARGE\iftoggle{jyufinnished}
-        \jyutitlefinnish \jyutitle} \\[0.05\textheight]
-      \textrm{\large\iftoggle{jyufinnished}
-        \jyupublicationfinnish \jyupublication,
+      \textbf{\LARGE\jyutitlex} \\[0.05\textheight]
+      \textrm{\large\jyupublicationx,
         \formatdate \jyuday \jyumonth \jyuyear} \\[0.1\textheight]
+      \newcounter{jyuauthorcounter}
+      \setcounter{jyuauthorcounter} 0
+      \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}}
+      \expandafter\docsvlist\expandafter{\jyuauthorx}
       \iftoggle{jyufinnished}
-        {Tekijä}{Author}: \\[0.01\textheight]
-        \textsc{\large\iftoggle{jyufinnished}
-        \jyuauthorfinnish \jyuauthor} \\[0.05\textheight]
-        \iftoggle{jyufinnished}
-        {Ohjaaja}{Supervisor}: \\[0.01\textheight]
-        \textsc{\large\iftoggle{jyufinnished}
-        \jyusupervisorfinnish \jyusupervisor} \\[0.2\textheight]
+      {\ifnumcomp{\value{jyuauthorcounter}} = 1
+        {Tekijä}{Tekijät}}
+      {\ifnumcomp{\value{jyuauthorcounter}} = 1
+        {Author}{Authors}}: \\[0.01\textheight]
+      \setcounter{jyuauthorcounter} 0
+      \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
+        \ifnumcomp{\value{jyuauthorcounter}} > 1
+        {\\}{}
+        \textsc{\large ##1}}
+      \expandafter\docsvlist\expandafter{\jyuauthorx} \\[0.05\textheight]
+      \newcounter{jyusupervisorcounter}
+      \setcounter{jyusupervisorcounter} 0
+      \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}}
+      \expandafter\docsvlist\expandafter{\jyusupervisorx}
+      \iftoggle{jyufinnished}
+      {\ifnumcomp{\value{jyusupervisorcounter}} = 1
+        {Ohjaaja}{Ohjaajat}}
+      {\ifnumcomp{\value{jyusupervisorcounter}} = 1
+        {Supervisor}{Supervisors}}: \\[0.01\textheight]
+      \setcounter{jyusupervisorcounter} 0
+      \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}
+        \ifnumcomp{\value{jyusupervisorcounter}} > 1
+        {\\}{}
+        \textsc{\large ##1}}
+      \expandafter\docsvlist\expandafter{\jyusupervisorx} \\[0.2\textheight]
       \begin{tikzpicture}[every node/.style={inner sep=0pt, outer sep=0pt}]
         \node[anchor=south west] (image) {
           \iftoggle{jyumonochromatic}
@@ -137,11 +159,8 @@
         \begin{scope}[x=1mm, y=1mm]
           \node[align=left, anchor=north west] at (10, 11) {
             \fontfamily{ppl}\selectfont
-            \iftoggle{jyufinnished}{\MakeUppercase
-              \jyuinstitutefinnish \\ \MakeUppercase
-              \jyudepartmentfinnish}{\MakeUppercase
-              \jyuinstitute \\ \MakeUppercase
-              \jyudepartment}};
+            \MakeUppercase\jyuinstitutex \\
+            \MakeUppercase\jyudepartmentx};
         \end{scope}
       \end{tikzpicture}}
   \end{titlepage}}
