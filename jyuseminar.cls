@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/05/08 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/05/24 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -103,17 +103,6 @@
     \setbeamercolor{title}{fg=white, bg=jyuhandle}
     \setbeamercolor{titlelike}{fg=white, bg=jyuhandle}}}
 
-\let \thephi \phi
-\let \thevarphi \varphi
-\let \theepsilon \epsilon
-\let \thevarepsilon \varepsilon
-\let \thekappa \kappa
-\let \thevarkappa \varkappa
-\let \phi \thevarphi
-\let \varphi \thephi
-\let \epsilon \thevarepsilon
-\let \varepsilon \theepsilon
-\let \kappa \thevarkappa
-\let \varkappa \thekappa
+\input{jyupreamble}
 
 \endinput

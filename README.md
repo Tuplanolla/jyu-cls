@@ -95,6 +95,16 @@ For high contrast pick the following combination.
     \usecolortheme{orchid} % inner
     \usecolortheme{whale} % outer
 
+## Minimal Preamble
+
+There is a minimal preamble that defines
+only those things that do not use any packages.
+It can be used with systems
+that only implement a small subset of LaTeX's features.
+For example Asymptote can use it as follows.
+
+    texpreamble("\input{jyupreamble}");
+
 [assets]: https://www.jyu.fi/yliopistopalvelut/viestinta/logot
 [text]: https://www.pantone.com/color-finder/Black-C
 [flame]: https://www.pantone.com/color-finder/166-C

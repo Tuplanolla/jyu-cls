@@ -1,4 +1,4 @@
-\ProvidesClass{jyuthesis}[2017/05/08 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/05/24 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -171,17 +171,6 @@
   \pagenumbering{arabic}
   \renewcommand \thepage{\thesection--\arabic{page}}}
 
-\let \thephi \phi
-\let \thevarphi \varphi
-\let \theepsilon \epsilon
-\let \thevarepsilon \varepsilon
-\let \thekappa \kappa
-\let \thevarkappa \varkappa
-\let \phi \thevarphi
-\let \varphi \thephi
-\let \epsilon \thevarepsilon
-\let \varepsilon \theepsilon
-\let \kappa \thevarkappa
-\let \varkappa \thekappa
+\input{jyupreamble}
 
 \endinput
