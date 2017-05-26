@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/05/24 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/05/26 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -52,8 +52,8 @@
 
 \PassOptionsToPackage{
   backend=biber,
-  date=iso8601, urldate=iso8601,
-  firstinits=true, minnames=1, maxnames=3,
+  date=edtf, seconds=true, urldate=edtf,
+  giveninits=true, minnames=1, maxnames=3,
   sorting=none, style=numeric-comp}{biblatex}
 \RequirePackage{biblatex}
 \DefineBibliographyStrings{finnish}{
