@@ -52,7 +52,7 @@
 
 \PassOptionsToPackage{
   backend=biber,
-  date=edtf, seconds=true, urldate=edtf,
+  alldates=edtf, seconds=true,
   giveninits=true, minnames=1, maxnames=3,
   sorting=none, style=numeric-comp}{biblatex}
 \RequirePackage{biblatex}
