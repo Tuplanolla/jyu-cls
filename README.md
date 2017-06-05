@@ -95,7 +95,23 @@ For high contrast pick the following combination.
     \usecolortheme{orchid} % inner
     \usecolortheme{whale} % outer
 
-## Minimal Preamble
+## Changes to Mathematics
+
+The following Greek letters are swapped with their variants.
+
+    \phi \epsilon \kappa
+
+The missing trigonometric functions needed
+to complete the following table are also defined.
+
+    \cos \cosh \arccos \arcosh
+    \sin \sinh \arcsin \arsinh
+    \tan \tanh \arctan \artanh
+    \sec \sech \arcsec \arsech
+    \csc \csch \arccsc \arcsch
+    \cot \coth \arccot \arcoth
+
+## Minimal Preambles
 
 There is a minimal preamble that defines
 only those things that do not use any packages.
@@ -104,6 +120,13 @@ that only implement a small subset of LaTeX's features.
 For example Asymptote can use it as follows.
 
     texpreamble("\input{jyupreamble}");
+
+There is another slightly bigger preamble
+that requires the `amsmath` package.
+Using Asymptote as an example again, it can be used as follows.
+
+    usepackage("amsmath");
+    texpreamble("\input{jyuamspreamble}");
 
 [assets]: https://www.jyu.fi/yliopistopalvelut/viestinta/logot
 [text]: https://www.pantone.com/color-finder/Black-C

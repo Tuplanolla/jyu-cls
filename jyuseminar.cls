@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/05/26 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/06/06 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -103,6 +103,6 @@
     \setbeamercolor{title}{fg=white, bg=jyuhandle}
     \setbeamercolor{titlelike}{fg=white, bg=jyuhandle}}}
 
-\input{jyupreamble}
+\input{jyuamspreamble}
 
 \endinput
