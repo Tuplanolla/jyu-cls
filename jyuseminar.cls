@@ -34,6 +34,8 @@
 
 \RequirePackage{graphicx}
 
+\RequirePackage{epstopdf}
+
 \RequirePackage{tikz}
 
 \RequirePackage{xcolor}
