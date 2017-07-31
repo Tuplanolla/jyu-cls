@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/06/06 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/07/31 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}

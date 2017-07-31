@@ -1,4 +1,4 @@
-\ProvidesClass{jyuthesis}[2017/06/06 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/07/31 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
