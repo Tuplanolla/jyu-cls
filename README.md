@@ -128,6 +128,27 @@ Using Asymptote as an example again, it can be used as follows.
     usepackage("amsmath");
     texpreamble("\input{jyuamspreamble}");
 
+## Legacy Compatibility
+
+If the version of your `biblatex` package is newer than 2016-05-10,
+you should be good to go.
+If the version is newer than 2015-12-28 but older than 2016-09-10,
+apply the following patch to `jyuthesis.cls` and `jyuseminar.cls`.
+
+    58c58
+    <   alldates=edtf, seconds=true,
+    ---
+    >   date=iso8601, urldate=iso8601,
+
+If the version is older than 2016-03-01, apply the following patch instead.
+
+    58,59c58,59
+    <   alldates=edtf, seconds=true,
+    <   giveninits=true, minnames=1, maxnames=3,
+    ---
+    >   date=iso8601, urldate=iso8601,
+    >   firstinits=true, minnames=1, maxnames=3,
+
 [assets]: https://www.jyu.fi/yliopistopalvelut/viestinta/logot
 [text]: https://www.pantone.com/color-finder/Black-C
 [flame]: https://www.pantone.com/color-finder/166-C
