@@ -1,4 +1,4 @@
-\ProvidesClass{jyuseminar}[2017/08/22 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/08/23 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
@@ -104,7 +104,7 @@
   \iftoggle{jyumonochromatic}{}{
     \setbeamercolor{titlelike}{fg=white, bg=jyuhandle}
     \setbeamercolor{block title example}{fg=white, bg=jyuhandle}
-    \setbeamercolor{block title alerted}{fg=white, bg=jyuflame}}}
+    \setbeamercolor{block title alerted}{fg=black, bg=jyuflame}}}
 
 \input{jyuamspreamble}
 
