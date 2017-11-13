@@ -1,5 +1,7 @@
-\ProvidesClass{jyuseminar}[2017/08/23 University of Jyväskylä Seminar]
+\ProvidesClass{jyuseminar}[2017/11/13 University of Jyväskylä Seminar]
 \NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{amssymb}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
 \RequirePackage{amsmath}
@@ -106,6 +108,6 @@
     \setbeamercolor{block title example}{fg=white, bg=jyuhandle}
     \setbeamercolor{block title alerted}{fg=black, bg=jyuflame}}}
 
-\input{jyuamspreamble}
+\input{jyupreamble}
 
 \endinput

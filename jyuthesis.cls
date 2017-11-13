@@ -1,5 +1,7 @@
-\ProvidesClass{jyuthesis}[2017/07/31 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/11/13 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{amssymb}
 
 \PassOptionsToPackage{intlimits, sumlimits}{amsmath}
 \RequirePackage{amsmath}
@@ -173,6 +175,6 @@
   \pagenumbering{arabic}
   \renewcommand \thepage{\thesection--\arabic{page}}}
 
-\input{jyuamspreamble}
+\input{jyupreamble}
 
 \endinput

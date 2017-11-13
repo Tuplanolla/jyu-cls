@@ -111,22 +111,17 @@ to complete the following table are also defined.
     \csc \csch \arccsc \arcsch
     \cot \coth \arccot \arcoth
 
-## Minimal Preambles
+## Minimal Preamble
 
-There is a minimal preamble that defines
-only those things that do not use any packages.
+There is a small preamble that defines only those things
+that require the basic AMS packages.
 It can be used with systems
 that only implement a small subset of LaTeX's features.
 For example Asymptote can use it as follows.
 
-    texpreamble("\input{jyupreamble}");
-
-There is another slightly bigger preamble
-that requires the `amsmath` package.
-Using Asymptote as an example again, it can be used as follows.
-
+    usepackage("amssymb");
     usepackage("amsmath");
-    texpreamble("\input{jyuamspreamble}");
+    texpreamble("\input{jyupreamble}");
 
 ## Legacy Compatibility
 
