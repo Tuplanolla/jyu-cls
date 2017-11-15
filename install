@@ -37,7 +37,6 @@ from="$PWD"
 
 to="$root/texmf/tex/latex/jyu"
 eval "$mk" "$to"
-eval "$mv" "$from/jyuamspreamble.tex" "$to"
 eval "$mv" "$from/jyupreamble.tex" "$to"
 eval "$mv" "$from/jyuseminar.cls" "$to"
 eval "$mv" "$from/jyuthesis.cls" "$to"
