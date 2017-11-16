@@ -1,4 +1,4 @@
-\ProvidesClass{jyuthesis}[2017/11/13 University of Jyväskylä Thesis]
+\ProvidesClass{jyuthesis}[2017/11/17 University of Jyväskylä Thesis]
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{amssymb}
@@ -170,7 +170,7 @@
   \end{titlepage}}
 
 \newcommand \appendixsection[1]{
-  \clearpage
+  \cleardoublepage
   \section{#1}
   \pagenumbering{arabic}
   \renewcommand \thepage{\thesection--\arabic{page}}}
