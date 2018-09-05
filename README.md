@@ -18,6 +18,11 @@ get all the technical details right,
 which shows in their handling of vector graphics, date formatting,
 text alignment, file organization and more.
 
+The poster document class is currently being worked on and
+not yet in usable condition.
+It is not included in the installation,
+but you may still experiment with it at your own risk.
+
 ## Installation
 
 Installing the document classes involves copying their files
@@ -80,6 +85,32 @@ rendered by Ghostscript 9.18.
 | Text   | 231f20 | 35, 31, 32
 | Flame  | f2511b | 242, 81, 27
 | Handle | 244aa5 | 36, 74, 165
+
+## New Colors
+
+Since consistency is considered to be a bad thing,
+the graphic designers recently changed the color scheme
+enough to look off in certain lighting conditions
+while otherwise remaining indistinguishable from the old one.
+
+The new colors are specified according to the following table.
+
+| Part   | PMS                      | Hex    | RGB           | CMYK
+|:-------|:-------------------------|:-------|:--------------|:---------------
+| Blue   | [648 CP][blue]           | 1d3d66 | 29, 61, 102   | 100, 71, 9, 56
+| Orange | [7625 CP][orange]        | dd583d | 221, 88, 61   | 0, 82, 80, 0
+| Gold   | [7562 CP][gold]          | be9a54 | 190, 154, 84  | 8, 29, 66, 19
+| Silver | [Cool Gray 3 CP][silver] | cacac7 | 202, 202, 199 | 8, 5, 7, 16
+
+The following table summarizes the actual colors
+rendered by Ghostscript 9.18.
+
+| Part   | Hex    | RGB
+|:-------|:-------|:--------------
+| Blue   | 0f2c4e | 15, 44, 78
+| Orange | fb4140 | 251, 65, 64
+| Gold   | c4924f | 196, 146, 79
+| Silver | c9cac6 | 201, 202, 198
 
 ## Beamer Themes
 
@@ -148,3 +179,7 @@ If the version is older than 2016-03-01, apply the following patch instead.
 [text]: https://www.pantone.com/color-finder/Black-C
 [flame]: https://www.pantone.com/color-finder/166-C
 [handle]: https://www.pantone.com/color-finder/286-C
+[blue]: https://www.pantone.com/color-finder/648-CP
+[orange]: https://www.pantone.com/color-finder/7625-CP
+[gold]: https://www.pantone.com/color-finder/7562-CP
+[silver]: https://www.pantone.com/color-finder/Cool-Gray-3-CP

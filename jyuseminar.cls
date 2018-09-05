@@ -83,6 +83,8 @@
 
   \mode<presentation>
 
+  \beamertemplatenavigationsymbolsempty
+
   \author \jyuauthorx
   \title \jyutitlex
   \subtitle \jyupublicationx

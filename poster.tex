@@ -1,0 +1,102 @@
+\documentclass[final, finnished, monochromatic]{jyuposter}
+
+\addbibresource{thesis.bib}
+
+\newcommand \jyuauthor{Author Name}
+\newcommand \jyuauthorfinnish{Tekijän Nimi}
+\newcommand \jyutitle{Title of Work}
+\newcommand \jyutitlefinnish{Työn otsikko}
+\newcommand \jyupublication{Type of Work}
+\newcommand \jyupublicationfinnish{Työn tyyppi}
+\newcommand \jyusupervisor{Supervisor Name, Other Supervisor Name}
+\newcommand \jyusupervisorfinnish{Ohjaajan Nimi, Toisen Ohjaajan Nimi}
+\newcommand \jyuinstitute{University of Jyväskylä}
+\newcommand \jyuinstitutefinnish{Jyväskylän yliopisto}
+\newcommand \jyudepartment{Department of Physics}
+\newcommand \jyudepartmentfinnish{Fysiikan laitos}
+\newcommand \jyuyear{2017}
+\newcommand \jyumonth{05}
+\newcommand \jyuday{01}
+
+\makesetup
+
+% These commands are optional.
+\newcommand \yesnumber{\addtocounter{equation} 1\tag \theequation}
+\newcommand \full{{\mathrm d}}
+
+\begin{document}
+
+\maketitle
+
+\begin{multicols} 3
+
+\noindent
+\begin{tcolorbox}
+\section*{Abstract}
+\fontfamily{fla}\fontseries b\fontshape n\fontsize{18}{27}\selectfont
+
+Yhtälö
+\begin{align*}
+  \phi (R', R'') & = \int \full x \chi (t, x)^* \psi (t, x)
+  \yesnumber \label{e/equation}
+\end{align*}
+löytyy myöhemmin vielä tekstin seasta numerolla \ref{e/equipment-again}.
+
+\lipsum[1]
+\end{tcolorbox}
+
+\section*{Piirasta}
+
+\lipsum[1-3]
+
+\bigskip
+\noindent
+\includegraphics[width=\columnwidth]{pie}
+
+\lipsum[4-5]
+
+\bigskip
+\noindent
+\begin{minipage} \columnwidth
+\begin{flushright}
+\includegraphics[width=\columnwidth]{equipment} \\
+\fontfamily{fla}\fontseries m\fontshape{it}\fontsize{18}{22}\selectfont
+Tässä on kaikenlaista kuvatekstiä.
+\end{flushright}
+\end{minipage}
+
+\lipsum[6-7]
+
+\section*{Kvanttipelleilyä}
+
+Tätä asiakirjaluokkaa voi käyttää vaikka
+kvanttimekaniikkaan liittyvän \cite{feynman-1948} yhtälön
+\begin{align*}
+  \phi (R', R'') & = \int \full x \chi (t, x)^* \psi (t, x)
+  \yesnumber \label{e/equation-again}
+\end{align*}
+kirjoittamiseen.
+On tosin parempi olla tekemättä niin.
+
+\bigskip
+\noindent
+\includegraphics[width=\columnwidth]{bars}
+
+\bigskip
+\noindent
+\begin{tcolorbox}
+\section*{Conclusions}
+
+\begin{itemize}
+  \item Ergh!
+  \item Urgh!
+\end{itemize}
+\end{tcolorbox}
+
+\nocite{*}
+
+\printbibliography
+
+\end{multicols}
+
+\end{document}
