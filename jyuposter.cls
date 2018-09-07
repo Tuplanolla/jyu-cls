@@ -1,4 +1,4 @@
-\ProvidesClass{jyuposter}[2018/09/01 University of Jyväskylä Poster]
+\ProvidesClass{jyuposter}[2018/09/07 University of Jyväskylä Poster]
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{amssymb}
@@ -135,21 +135,37 @@ fonttitle=\bfseries, nobeforeafter}
 
 \PassOptionsToPackage{headsep=20mm,
   a1paper, bottom=35mm, left=25mm, right=25mm, top=120mm}{geometry}
+% \PassOptionsToPackage{showframe}{geometry}
 \RequirePackage{geometry}
 
 \newcommand \makesetup{
-  \edef \jyuauthorx{\iftoggle{jyufinnished} \jyuauthorfinnish \jyuauthor}
-  \edef \jyutitlex{\iftoggle{jyufinnished} \jyutitlefinnish \jyutitle}
-  \edef \jyupublicationx{\iftoggle{jyufinnished} \jyupublicationfinnish \jyupublication}
-  \edef \jyusupervisorx{\iftoggle{jyufinnished} \jyusupervisorfinnish \jyusupervisor}
-  \edef \jyuinstitutex{\iftoggle{jyufinnished} \jyuinstitutefinnish \jyuinstitute}
-  \edef \jyudepartmentx{\iftoggle{jyufinnished} \jyudepartmentfinnish \jyudepartment}
+  \edef \jyuauthorx{\iftoggle{jyufinnished}
+    \jyuauthorfinnish \jyuauthor}
+  \edef \jyutitlex{\iftoggle{jyufinnished}
+    \jyutitlefinnish \jyutitle}
+  \edef \jyupublicationx{\iftoggle{jyufinnished}
+    \jyupublicationfinnish \jyupublication}
+  \edef \jyusupervisorx{\iftoggle{jyufinnished}
+    \jyusupervisorfinnish \jyusupervisor}
+  \edef \jyuinstitutex{\iftoggle{jyufinnished}
+    \jyuinstitutefinnish \jyuinstitute}
+  \edef \jyufacultyx{\iftoggle{jyufinnished}
+    \jyufacultyfinnish \jyufaculty}
+  \edef \jyudepartmentx{\iftoggle{jyufinnished}
+    \jyudepartmentfinnish \jyudepartment}
+  \edef \jyuurlx{\iftoggle{jyufinnished}
+    \jyuurlfinnish \jyuurl}
+  \edef \jyusloganx{\iftoggle{jyufinnished}
+    \jyusloganfinnish \jyuslogan}
+  \edef \jyushortsloganx{\iftoggle{jyufinnished}
+    \jyushortsloganfinnish \jyushortslogan}
 
   \hypersetup{
     pdfauthor=\jyuauthorx,
     pdftitle=\jyutitlex,
     pdfsubject=\jyupublicationx}}
 
+% TODO Remove this.
 \renewcommand \maketitle{
   \begin{titlepage}
     \noindent\hspace*{0.1\textwidth}\rule{0.8pt}
@@ -211,7 +227,6 @@ fonttitle=\bfseries, nobeforeafter}
   \end{raggedright}
   \bigskip
 
-  % See table 4 in the documentation for the package `lato` for more options.
   \fontfamily{fla}\fontseries b\fontshape n\fontsize{16}{26}\selectfont
   \setlength \columnsep{15mm}
 }
@@ -248,9 +263,9 @@ fonttitle=\bfseries, nobeforeafter}
 % Alternative style.
 \chead{
 \begin{tikzpicture}[remember picture, overlay]
-\node[rectangle, fill=jyublue, anchor=north west, name=travis,
+\node[rectangle, fill=jyublue, anchor=north west,
 xshift=25mm, yshift=0mm,
-minimum width=100mm, minimum height=100mm] at (current page.north west) {
+minimum width=100mm, minimum height=100mm] (travis) at (current page.north west) {
 \begin{minipage}[b]{80mm}
 \centering
 \vspace{6mm}
@@ -260,7 +275,7 @@ minimum width=100mm, minimum height=100mm] at (current page.north west) {
 \vspace{6mm} \\
 \fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
 \color{jyuorange} \MakeUppercase{JYU.}
-\color{white} \MakeUppercase{Since 1863.}
+\color{white} \MakeUppercase{\jyushortsloganx}
 \end{minipage}
 };
 \node[rectangle, anchor=north west,
@@ -268,13 +283,20 @@ xshift=25mm, yshift=0mm,
 minimum width=400mm, minimum height=100mm] at (travis.north east) {
 \begin{minipage}[b]{400mm}
 \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
-\MakeUppercase{Informaatioteknologian Tiedekunta} \\
-\MakeUppercase{https://www.jyu.fi/it/} \\[\baselineskip]
-\fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
-\jyuauthorx
-\fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont
-,
-University of Jyväskylä
+\MakeUppercase{\jyufacultyx} \\
+\MakeUppercase{\jyuurlx} \\[\baselineskip]
+%
+  \newcounter{jyuauthorcounter}
+  \setcounter{jyuauthorcounter} 0
+  \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
+    \ifnumcomp{\value{jyuauthorcounter}} > 1
+    {\\}{}
+    \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
+    ##1
+    \fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont
+    , University of Jyväskylä}
+  \expandafter\docsvlist\expandafter{\jyuauthorx}
+%
 \end{minipage}
 };
 \end{tikzpicture}}
@@ -282,14 +304,14 @@ University of Jyväskylä
 \lfoot{}
 \cfoot{
 \begin{tikzpicture}[remember picture, overlay]
-\node[name=mike, rectangle, fill=jyublue,
-anchor=south west, minimum width=\paperwidth, minimum height=15mm] at (current page.south west) {};
+\node[rectangle, fill=jyublue,
+anchor=south west, minimum width=\paperwidth, minimum height=15mm] (mike) at (current page.south west) {};
 \node[rectangle, inner sep=10mm, anchor=south west] at (mike.north west) {
 \begin{minipage}[b]{\paperwidth}
   \centering
   \fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
   \color{jyugold} \MakeUppercase{JYU.}
-  \color{jyublue} \MakeUppercase{Tulevaisuuden palveluksesssa jo vuodesta 1863.}
+  \color{jyublue} \MakeUppercase{\jyusloganx}
 \end{minipage}
 };
 \end{tikzpicture}}
@@ -300,7 +322,10 @@ anchor=south west, minimum width=\paperwidth, minimum height=15mm] at (current p
 
 \RequirePackage{lipsum}
 \titleformat \section{
-\fontfamily{RobotoSlab-LF}\fontseries b\fontshape n\fontsize{22}{26}\selectfont
+  % The documentation for the package `lato`
+  % says `eb` is for Heavy and `ub` is for Black,
+  % but in older versions `eb` is for Black and `ub` does not exist.
+  \fontfamily{fla}\fontseries{eb}\fontshape n\fontsize{22}{26}\selectfont
 }{\thesection}{}{\MakeUppercase}
 
 \input{jyupreamble}
