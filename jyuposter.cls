@@ -47,7 +47,6 @@
 \definecolor{jyusilver}{RGB/cmyk}{202, 202, 199 / 0.08, 0.05, 0.07, 0.16}
 
 \RequirePackage{tikz}
-\RequirePackage{tikzscale}
 
 % The package `tikzscale` would allow using the command `\includegraphics`,
 % but it does not register the file extension early enough to be usable.
