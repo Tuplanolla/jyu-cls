@@ -1,5 +1,10 @@
-\begin{tikzpicture}[xscale=1, yscale=-1]
-\fill[\jyuhandlestyle]
+% This picture was derived from the PostScript source file
+% by translating /mo/moveto, /li/lineto, /cv/curveto and /cp/closepath.
+% We leave `jyuhandle` and `jyuflame` free for customization.
+\begin{tikzpicture}[xscale=1, yscale=-1, x=0.1mm, y=0.1mm]
+% The source picture is quite peculiar.
+% The handle is specified to a precision of three decimal places.
+\filldraw[jyuhandle]
 (257.512, 139.681)
 .. controls (233.408, 139.681) and (214.211, 125.393) .. (204.656, 110.705)
 -- (204.463, 110.409)
@@ -7,7 +12,7 @@
 -- (310.373, 110.702)
 .. controls (298.939, 128.926) and (279.592, 139.681) .. (257.512, 139.681)
 -- cycle;
-\fill[\jyuhandlestyle]
+\filldraw[jyuhandle]
 (266.711, 240.861)
 -- (248.308, 240.861)
 -- (248.308, 144.143)
@@ -15,7 +20,8 @@
 .. controls (255.668, 146.157) and (259.369, 146.448) .. (266.465, 144.212)
 -- (266.711, 144.133)
 -- cycle;
-\fill[\jyuflamestyle]
+% The flame is specified to a precision of six decimal places.
+\filldraw[jyuflame]
 (267.338000, 11.798300)
 .. controls (276.326000, 20.113200) and (274.309000, 32.512200) .. (272.375000, 36.259700)
 .. controls (268.160000, 44.428700) and (258.779000, 54.937000) .. (256.408000, 57.811500)
@@ -28,7 +34,7 @@
 .. controls (265.672000, 24.501900) and (265.332000, 20.722100) .. (262.277000, 15.980400)
 .. controls (262.322000, 16.028300) and (267.338000, 11.798300) .. (267.338000, 11.798300)
 -- cycle;
-\fill[\jyuflamestyle]
+\filldraw[jyuflame]
 (259.482000, 107.087000)
 -- (246.650000, 107.087000)
 .. controls (244.024000, 99.354000) and (240.686000, 89.173800) .. (243.857000, 81.142500)
@@ -40,7 +46,7 @@
 .. controls (268.160000, 72.570700) and (263.506000, 76.935000) .. (257.158000, 84.233800)
 .. controls (252.301000, 89.818800) and (257.730000, 101.007000) .. (259.482000, 107.087000)
 -- cycle;
-\fill[\jyuflamestyle]
+\filldraw[jyuflame]
 (274.195000, 107.087000)
 -- (263.305000, 107.087000)
 .. controls (262.279000, 103.203000) and (260.643000, 99.126400) .. (260.008000, 95.158600)
@@ -53,7 +59,7 @@
 .. controls (271.018000, 93.405700) and (270.846000, 93.600000) .. (271.750000, 97.701600)
 .. controls (272.502000, 100.847000) and (273.551000, 104.870000) .. (274.195000, 107.087000)
 -- cycle;
-\fill[\jyuflamestyle]
+\filldraw[jyuflame]
 (226.463000, 77.370100)
 .. controls (223.523000, 73.077100) and (222.094000, 69.014600) .. (221.760000, 63.613700)
 .. controls (221.012000, 51.454000) and (229.762000, 41.539000) .. (237.028000, 31.329000)
@@ -63,4 +69,5 @@
 .. controls (260.328000, 6.125440) and (260.730000, 15.604900) .. (257.334000, 22.763600)
 .. controls (249.711000, 38.827100) and (224.246000, 59.649400) .. (226.463000, 77.370100)
 -- cycle;
-\end{tikzpicture}
+% Without commenting out the end of file, the bounding box would be broken.
+\end{tikzpicture}%

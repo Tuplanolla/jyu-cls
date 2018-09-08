@@ -55,18 +55,23 @@ löytyy myöhemmin vielä tekstin seasta numerolla \ref{e/equation-again}.
 
 \section*{Piirasta}
 
-\lipsum[1-2]
+\lipsum[1-3]
 
-Logo purkissa.
+The logo can be customized parametrically, globally or per invocation.
 
-\renewcommand \jyuhandlestyle{jyublue}
-\renewcommand \jyuflamestyle{jyuorange}
-% \fbox{\jyulogo{width=50mm}}
-% \input{jyulogo}
+\tikzset{
+  jyutorch/.style={line width=0.2mm},
+  jyuhandle/.style={fill=none, draw=jyublue},
+  jyuflame/.style={fill=none, draw=jyublue}}
 
 \bigskip
 \noindent
-\includegraphics[width=\columnwidth]{pie}
+% \includegraphics[width=\columnwidth]{pie}
+\fbox{\resizebox{150mm}{80mm} \jyulogo}
+
+\tikzset{
+  jyuhandle/.style={fill=jyublue, draw=none},
+  jyuflame/.style={fill=jyuorange, draw=none}}
 
 \lipsum[4-5]
 
@@ -74,7 +79,9 @@ Logo purkissa.
 \noindent
 \begin{minipage} \columnwidth
 \begin{flushright}
-\includegraphics[width=\columnwidth]{equipment} \\
+% \includegraphics[width=\columnwidth]{equipment}
+\fbox{\resizebox{150mm}{240mm} \jyulogo}
+\\
 \fontfamily{fla}\fontseries m\fontshape{it}\fontsize{18}{22}\selectfont
 Tässä on kaikenlaista kuvatekstiä.
 \end{flushright}
@@ -95,7 +102,8 @@ On tosin parempi olla tekemättä niin.
 
 \bigskip
 \noindent
-\includegraphics[width=\columnwidth]{bars}
+% \includegraphics[width=\columnwidth]{bars}
+\fbox{\resizebox{150mm}{120mm} \jyulogo}
 
 \bigskip
 \noindent

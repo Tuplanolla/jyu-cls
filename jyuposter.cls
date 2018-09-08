@@ -49,14 +49,13 @@
 \RequirePackage{tikz}
 \RequirePackage{tikzscale}
 
-% This picture was derived from the PostScript source file
-% by translating /mo/moveto, /li/lineto, /cv/curveto and /cp/closepath.
-% The following would be another otpion, if `tikzscale` did not exist.
-% \tikzset{jyulogo/.pic={code={\input{jyulogo}}}}
-% \newcommand \jyulogo[1]{\tikzpicture\path (0, 0) pic {jyulogo};\endtikzpicture}
-\newcommand \jyuhandlestyle{jyublue}
-\newcommand \jyuflamestyle{jyuorange}
-\newcommand \jyulogo[1]{\includegraphics[#1]{jyulogo}}
+% The package `tikzscale` would allow using the command `\includegraphics`,
+% but it does not register the file extension early enough to be usable.
+\tikzset{
+  jyutorch/.style={},
+  jyuhandle/.style={fill=jyublue, draw=none},
+  jyuflame/.style={fill=jyuorange, draw=none}}
+\newcommand \jyulogo{\input{jyulogo}}
 
 \PassOptionsToPackage{
   binary-units=true,
@@ -144,7 +143,7 @@ fonttitle=\bfseries, nobeforeafter}
 \RequirePackage{multicol}
 
 \PassOptionsToPackage{headsep=20mm,
-  a1paper, bottom=35mm, left=25mm, right=25mm, top=120mm}{geometry}
+  a1paper, bottom=35mm, left=25mm, right=25mm, top=130mm}{geometry}
 % \PassOptionsToPackage{showframe}{geometry}
 \RequirePackage{geometry}
 
@@ -277,16 +276,15 @@ fonttitle=\bfseries, nobeforeafter}
 \begin{tikzpicture}[remember picture, overlay]
 \node[rectangle, fill=jyublue, anchor=north west,
 xshift=25mm, yshift=0mm,
-minimum width=100mm, minimum height=100mm] (travis) at (current page.north west) {
-\begin{minipage}[b]{80mm}
+minimum width=120mm, minimum height=120mm] (travis) at (current page.north west) {
+\begin{minipage}[b]{100mm}
 \centering
 \vspace{6mm}
 \hspace{20mm}
-\renewcommand \jyuhandlestyle{white}
-\renewcommand \jyuflamestyle{white}
-% \jyulogo{width=50mm}
-% \input{jyulogo}
-\includegraphics[height=50mm]{torch}
+\tikzset{
+  jyuhandle/.style={fill=white, draw=none},
+  jyuflame/.style={fill=white, draw=none}}
+\resizebox !{54mm} \jyulogo
 \hspace{20mm}
 \vspace{6mm} \\
 \fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
@@ -295,7 +293,7 @@ minimum width=100mm, minimum height=100mm] (travis) at (current page.north west)
 \end{minipage}
 };
 \node[rectangle, anchor=north west,
-xshift=25mm, yshift=0mm,
+xshift=25mm, yshift=-10mm,
 minimum width=400mm, minimum height=100mm] at (travis.north east) {
 \begin{minipage}[b]{400mm}
 \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
