@@ -39,14 +39,24 @@
 
 \RequirePackage{epstopdf}
 
-\RequirePackage{tikz}
-
 % Use `\selectcolormodel{cmyk}` for print.
 \RequirePackage{xcolor}
 \definecolor{jyublue}{RGB/cmyk}{29, 61, 102 / 1.00, 0.71, 0.09, 0.56}
 \definecolor{jyuorange}{RGB/cmyk}{221, 88, 61 / 0.00, 0.82, 0.80, 0.00}
 \definecolor{jyugold}{RGB/cmyk}{190, 154, 84 / 0.08, 0.29, 0.66, 0.19}
 \definecolor{jyusilver}{RGB/cmyk}{202, 202, 199 / 0.08, 0.05, 0.07, 0.16}
+
+\RequirePackage{tikz}
+\RequirePackage{tikzscale}
+
+% This picture was derived from the PostScript source file
+% by translating /mo/moveto, /li/lineto, /cv/curveto and /cp/closepath.
+% The following would be another otpion, if `tikzscale` did not exist.
+% \tikzset{jyulogo/.pic={code={\input{jyulogo}}}}
+% \newcommand \jyulogo[1]{\tikzpicture\path (0, 0) pic {jyulogo};\endtikzpicture}
+\newcommand \jyuhandlestyle{jyublue}
+\newcommand \jyuflamestyle{jyuorange}
+\newcommand \jyulogo[1]{\includegraphics[#1]{jyulogo}}
 
 \PassOptionsToPackage{
   binary-units=true,
@@ -237,6 +247,8 @@ fonttitle=\bfseries, nobeforeafter}
   \pagenumbering{arabic}
   \renewcommand \thepage{\thesection--\arabic{page}}}
 
+  \newcounter{jyuauthorcounter}
+%
 \RequirePackage{fancyhdr}
 \renewcommand \headrulewidth{0pt}
 \renewcommand \footrulewidth{0pt}
@@ -270,6 +282,10 @@ minimum width=100mm, minimum height=100mm] (travis) at (current page.north west)
 \centering
 \vspace{6mm}
 \hspace{20mm}
+\renewcommand \jyuhandlestyle{white}
+\renewcommand \jyuflamestyle{white}
+% \jyulogo{width=50mm}
+% \input{jyulogo}
 \includegraphics[height=50mm]{torch}
 \hspace{20mm}
 \vspace{6mm} \\
@@ -286,7 +302,6 @@ minimum width=400mm, minimum height=100mm] at (travis.north east) {
 \MakeUppercase{\jyufacultyx} \\
 \MakeUppercase{\jyuurlx} \\[\baselineskip]
 %
-  \newcounter{jyuauthorcounter}
   \setcounter{jyuauthorcounter} 0
   \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
     \ifnumcomp{\value{jyuauthorcounter}} > 1
