@@ -296,19 +296,20 @@ xshift=25mm, yshift=-10mm,
 minimum width=400mm, minimum height=100mm] at (travis.north east) {
 \begin{minipage}[b]{400mm}
 \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
-\MakeUppercase{\jyufacultyx} \\
-\MakeUppercase{\jyuurlx} \\[\baselineskip]
-%
+\ifdefempty{\jyufacultyx}{}{\MakeUppercase{\jyufacultyx} \\}
+\ifdefempty{\jyudepartmentx}{}{\MakeUppercase{\jyudepartmentx} \\}
+\ifdefempty{\jyurlx}{}{\MakeUppercase{\jyuurlx} \\[\baselineskip]}
+% Do not touch this...
   \setcounter{jyuauthorcounter} 0
   \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
     \ifnumcomp{\value{jyuauthorcounter}} > 1
     {\\}{}
     \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
-    ##1
-    \fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont
-    , University of Jyväskylä}
+    ##1%
+\fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont%
+, University of Jyväskylä}
   \expandafter\docsvlist\expandafter{\jyuauthorx}
-%
+% ...unless you are very careful.
 \end{minipage}
 };
 \end{tikzpicture}}
