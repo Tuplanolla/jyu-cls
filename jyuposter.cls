@@ -141,8 +141,10 @@ fonttitle=\bfseries, nobeforeafter}
 
 \RequirePackage{multicol}
 
-\PassOptionsToPackage{headsep=20mm,
-  a1paper, bottom=35mm, left=25mm, right=25mm, top=130mm}{geometry}
+\PassOptionsToPackage{headsep=0mm,
+  includehead, includefoot,
+  a1paper, bottom=25mm, left=25mm, right=25mm, top=25mm
+}{geometry}
 % \PassOptionsToPackage{showframe}{geometry}
 \RequirePackage{geometry}
 
@@ -171,60 +173,85 @@ fonttitle=\bfseries, nobeforeafter}
   \hypersetup{
     pdfauthor=\jyuauthorx,
     pdftitle=\jyutitlex,
-    pdfsubject=\jyupublicationx}}
+    pdfsubject=\jyupublicationx}
 
-% TODO Remove this.
-\renewcommand \maketitle{
-  \begin{titlepage}
-    \noindent\hspace*{0.1\textwidth}\rule{0.8pt}
-    \textheight\hspace*{0.05\textwidth}\parbox[b]{0.84\textwidth}{
-      \raggedright
-      \textbf{\LARGE\jyutitlex} \\[0.05\textheight]
-      \textrm{\large\jyupublicationx,
-        \formatdate \jyuday \jyumonth \jyuyear} \\[0.1\textheight]
-      \newcounter{jyuauthorcounter}
-      \setcounter{jyuauthorcounter} 0
-      \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}}
-      \expandafter\docsvlist\expandafter{\jyuauthorx}
-      \iftoggle{jyufinnished}{
-        \ifnumcomp{\value{jyuauthorcounter}} = 1
-        {Tekijä}{Tekijät}}{
-        \ifnumcomp{\value{jyuauthorcounter}} = 1
-        {Author}{Authors}}: \\[0.01\textheight]
-      \setcounter{jyuauthorcounter} 0
-      \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
-        \ifnumcomp{\value{jyuauthorcounter}} > 1
-        {\\}{}
-        \textsc{\large ##1}}
-      \expandafter\docsvlist\expandafter{\jyuauthorx} \\[0.05\textheight]
-      \newcounter{jyusupervisorcounter}
-      \setcounter{jyusupervisorcounter} 0
-      \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}}
-      \expandafter\docsvlist\expandafter{\jyusupervisorx}
-      \iftoggle{jyufinnished}{
-        \ifnumcomp{\value{jyusupervisorcounter}} = 1
-        {Ohjaaja}{Ohjaajat}}{
-        \ifnumcomp{\value{jyusupervisorcounter}} = 1
-        {Supervisor}{Supervisors}}: \\[0.01\textheight]
-      \setcounter{jyusupervisorcounter} 0
-      \renewcommand* \do[1]{\stepcounter{jyusupervisorcounter}
-        \ifnumcomp{\value{jyusupervisorcounter}} > 1
-        {\\}{}
-        \textsc{\large ##1}}
-      \expandafter\docsvlist\expandafter{\jyusupervisorx} \\[0.2\textheight]
-      \begin{tikzpicture}[every node/.style={inner sep=0pt, outer sep=0pt}]
-        \node[anchor=south west] (image) {
-          \iftoggle{jyumonochromatic}
-          {\includegraphics[height=27mm]{jyu-tight-outline}}
-          {\includegraphics[height=27mm]{jyu-tight}}};
-        \begin{scope}[x=1mm, y=1mm]
-          \node[align=left, anchor=north west] at (10, 11) {
-            \fontfamily{ppl}\selectfont
-            \MakeUppercase\jyuinstitutex \\
-            \MakeUppercase\jyudepartmentx};
-        \end{scope}
-      \end{tikzpicture}}
-  \end{titlepage}}
+% Do not touch this...
+\newsavebox \crapbox
+\savebox \crapbox{
+\begin{minipage}[t]{400mm}
+\color{jyublue}
+\vspace{15mm}
+\fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
+\ifdefempty{\jyufacultyx}{}{\MakeUppercase{\jyufacultyx} \\}
+\ifdefempty{\jyudepartmentx}{}{\MakeUppercase{\jyudepartmentx} \\}
+\ifdefempty{\jyurlx}{}{\MakeUppercase{\jyuurlx} \\[\baselineskip]}
+  \setcounter{jyuauthorcounter} 0
+  \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
+    \ifnumcomp{\value{jyuauthorcounter}} > 1
+    {\\}{}
+    \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
+    ##1%
+\fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont%
+, University of Jyväskylä}
+%
+  \expandafter\docsvlist\expandafter{\jyuauthorx}
+% ...unless you are very careful.
+\end{minipage}
+}
+\newlength \crapboxh
+\settototalheight \crapboxh{\usebox \crapbox}
+\newlength \crapboxhh
+\setlength \crapboxhh{\maxof{110mm}{\crapboxh}}
+\setlength \headheight{\crapboxhh}
+\newlength \crapboxhhh
+\setlength \crapboxhhh{\crapboxhh}
+\addtolength \crapboxhhh{10mm}
+\renewcommand \headrulewidth{0pt}
+\renewcommand \footrulewidth{0pt}
+\lhead{}
+\chead{
+\begin{tikzpicture}[remember picture, overlay]
+\node[rectangle, fill=jyublue, anchor=north west,
+xshift=25mm, yshift=0mm,
+minimum width=120mm, minimum height=\crapboxhhh] (travis) at (current page.north west) {
+\begin{minipage}[b]{100mm}
+\centering
+\vspace{6mm}
+\hspace{20mm}
+\tikzset{
+  jyuhandle/.style={fill=white, draw=none},
+  jyuflame/.style={fill=white, draw=none}}
+\resizebox !{54mm} \jyulogo
+\hspace{20mm}
+\vspace{6mm} \\
+\fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
+\color{jyuorange} \MakeUppercase{JYU.}
+\color{white} \MakeUppercase{\jyushortsloganx}
+\end{minipage}
+};
+\node[rectangle, anchor=north west,
+xshift=25mm, yshift=0mm,
+minimum width=400mm, minimum height=\crapboxhhh] at (travis.north east) {
+\usebox \crapbox
+};
+\end{tikzpicture}}
+\rhead{}
+\lfoot{}
+\cfoot{
+\begin{tikzpicture}[remember picture, overlay]
+\node[rectangle, fill=jyublue,
+anchor=south west, minimum width=\paperwidth, minimum height=15mm] (mike) at (current page.south west) {};
+\node[rectangle, inner sep=10mm, anchor=south west] at (mike.north west) {
+\begin{minipage}[b]{\paperwidth}
+  \centering
+  \fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
+  \color{jyugold} \MakeUppercase{JYU.}
+  \color{jyublue} \MakeUppercase{\jyusloganx}
+\end{minipage}
+};
+\end{tikzpicture}}
+\rfoot{}
+  }
 
 \renewcommand \maketitle{
   % These breaks are fragile; investigate.
@@ -248,87 +275,6 @@ fonttitle=\bfseries, nobeforeafter}
   \newcounter{jyuauthorcounter}
 %
 \RequirePackage{fancyhdr}
-\renewcommand \headrulewidth{0pt}
-\renewcommand \footrulewidth{0pt}
-\lhead{}
-\chead{
-\begin{tikzpicture}[remember picture, overlay]
-\node[rectangle, fill=jyublue, anchor=north west] at (current page.north west) {
-\begin{minipage}[b]{0.2\paperwidth}
-  \vspace{6mm}
-  \hspace{20mm}
-  \includegraphics[height=50mm]{torch}
-  \hspace{20mm}
-  \vspace{6mm}
-\end{minipage}
-\begin{minipage}[b]{0.8\paperwidth}
-  \begin{tcolorbox}[width=\columnwidth-100mm,
-  colback=jyusilver, colupper=jyublue]
-  Tähän laatikkoon voi työntää jotain ja
-  tämän laatikon voi sitten työntää jonnekin.
-  \end{tcolorbox}
-\end{minipage}
-};
-\end{tikzpicture}}
-% Alternative style.
-\chead{
-\begin{tikzpicture}[remember picture, overlay]
-\node[rectangle, fill=jyublue, anchor=north west,
-xshift=25mm, yshift=0mm,
-minimum width=120mm, minimum height=120mm] (travis) at (current page.north west) {
-\begin{minipage}[b]{100mm}
-\centering
-\vspace{6mm}
-\hspace{20mm}
-\tikzset{
-  jyuhandle/.style={fill=white, draw=none},
-  jyuflame/.style={fill=white, draw=none}}
-\resizebox !{54mm} \jyulogo
-\hspace{20mm}
-\vspace{6mm} \\
-\fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
-\color{jyuorange} \MakeUppercase{JYU.}
-\color{white} \MakeUppercase{\jyushortsloganx}
-\end{minipage}
-};
-\node[rectangle, anchor=north west,
-xshift=25mm, yshift=-10mm,
-minimum width=400mm, minimum height=100mm] at (travis.north east) {
-\begin{minipage}[b]{400mm}
-\fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
-\ifdefempty{\jyufacultyx}{}{\MakeUppercase{\jyufacultyx} \\}
-\ifdefempty{\jyudepartmentx}{}{\MakeUppercase{\jyudepartmentx} \\}
-\ifdefempty{\jyurlx}{}{\MakeUppercase{\jyuurlx} \\[\baselineskip]}
-% Do not touch this...
-  \setcounter{jyuauthorcounter} 0
-  \renewcommand* \do[1]{\stepcounter{jyuauthorcounter}
-    \ifnumcomp{\value{jyuauthorcounter}} > 1
-    {\\}{}
-    \fontfamily{fla}\fontseries b\fontshape n\fontsize{30}{34}\selectfont
-    ##1%
-\fontfamily{fla}\fontseries m\fontshape n\fontsize{25}{30}\selectfont%
-, University of Jyväskylä}
-  \expandafter\docsvlist\expandafter{\jyuauthorx}
-% ...unless you are very careful.
-\end{minipage}
-};
-\end{tikzpicture}}
-\rhead{}
-\lfoot{}
-\cfoot{
-\begin{tikzpicture}[remember picture, overlay]
-\node[rectangle, fill=jyublue,
-anchor=south west, minimum width=\paperwidth, minimum height=15mm] (mike) at (current page.south west) {};
-\node[rectangle, inner sep=10mm, anchor=south west] at (mike.north west) {
-\begin{minipage}[b]{\paperwidth}
-  \centering
-  \fontfamily{fla}\fontseries b\fontshape n\fontsize{25}{30}\selectfont
-  \color{jyugold} \MakeUppercase{JYU.}
-  \color{jyublue} \MakeUppercase{\jyusloganx}
-\end{minipage}
-};
-\end{tikzpicture}}
-\rfoot{}
 \AtBeginDocument{\pagestyle{fancy}}
 
 \AtBeginDocument{\color{jyublue}}
