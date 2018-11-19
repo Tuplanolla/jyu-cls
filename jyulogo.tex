@@ -1,9 +1,10 @@
 % This picture was derived from the PostScript source file
-% by translating /mo/moveto, /li/lineto, /cv/curveto and /cp/closepath.
+% by translating `/mo/moveto`, `/li/lineto`, `/cv/curveto` and `/cp/closepath`.
 % We leave `jyuhandle` and `jyuflame` free for customization.
 \begin{tikzpicture}[xscale=1, yscale=-1, x=0.1mm, y=0.1mm]
 % The source picture is quite peculiar.
-% The handle is specified to a precision of three decimal places.
+% The handle has two parts
+% that are specified to a precision of three decimal places.
 \filldraw[jyuhandle]
 (257.512, 139.681)
 .. controls (233.408, 139.681) and (214.211, 125.393) .. (204.656, 110.705)
@@ -20,7 +21,8 @@
 .. controls (255.668, 146.157) and (259.369, 146.448) .. (266.465, 144.212)
 -- (266.711, 144.133)
 -- cycle;
-% The flame is specified to a precision of six decimal places.
+% The flame has four parts,
+% but they are specified to a precision of six decimal places.
 \filldraw[jyuflame]
 (267.338000, 11.798300)
 .. controls (276.326000, 20.113200) and (274.309000, 32.512200) .. (272.375000, 36.259700)
@@ -69,5 +71,6 @@
 .. controls (260.328000, 6.125440) and (260.730000, 15.604900) .. (257.334000, 22.763600)
 .. controls (249.711000, 38.827100) and (224.246000, 59.649400) .. (226.463000, 77.370100)
 -- cycle;
-% Without commenting out the end of file, the bounding box would be broken.
+% Without commenting out the end of file,
+% the line break at the end would expand the bounding box of the picture.
 \end{tikzpicture}%
